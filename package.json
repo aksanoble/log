@@ -2,8 +2,8 @@
   "name": "kanthi-blog",
   "private": true,
   "scripts": {
-    "build": "rm -rf docs && npx @11ty/eleventy",
-    "serve": "rm -rf docs && npx @11ty/eleventy --serve",
+    "build": "rm -rf docs && ELEVENTY_PATH_PREFIX=/ npx @11ty/eleventy",
+    "serve": "rm -rf docs && ELEVENTY_PATH_PREFIX=/ npx @11ty/eleventy --serve",
     "clean": "rm -rf docs"
   },
   "devDependencies": {

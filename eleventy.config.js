@@ -4,6 +4,7 @@ function formatDate(date, options) {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   eleventyConfig.addFilter("dateShort", (date) =>
     formatDate(date, { month: "short", day: "numeric" })
@@ -90,7 +91,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       output: "docs",
     },
-    pathPrefix: "/log/",
+    pathPrefix: process.env.ELEVENTY_PATH_PREFIX || "/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };
