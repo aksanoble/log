@@ -90,6 +90,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       output: "docs",
     },
+    pathPrefix: "/log/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };

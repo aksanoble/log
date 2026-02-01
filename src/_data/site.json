@@ -2,6 +2,10 @@
   "title": "kanthi",
   "description": "Digital garden and stream",
   "useArticleFonts": true,
+  "socials": [
+    { "label": "X", "url": "https://x.com/aksanoble" },
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/akshaykanthi" }
+  ],
   "nav": [
     { "label": "Index", "url": "/" },
     { "label": "Archive", "url": "/archive/" },

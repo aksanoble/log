@@ -125,6 +125,48 @@ nav a.active {
   text-decoration: none;
 }
 
+.site-footer {
+  border-top: var(--article-border);
+  background: var(--article-cream);
+  color: var(--article-green-dark);
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--article-font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
 .main-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -339,6 +381,19 @@ nav a.active {
   top: 10%;
   right: 10%;
   transform: scale(0.9) rotate(-5deg);
+}
+
+.scribble-photo {
+  overflow: hidden;
+  background: #fff;
+}
+
+.scribble-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: rotate(5deg) scale(1.1);
 }
 
 .scribble-underline {
@@ -761,6 +816,7 @@ nav a.active {
   background-color: #1a1a1a;
   color: var(--article-green-dark);
   font-family: var(--article-font-body);
+  --c-ink: var(--article-green-dark);
 }
 
 .site-frame {
@@ -868,6 +924,7 @@ nav a.active {
 .article-body {
   font-size: 1.05rem;
   line-height: 1.7;
+  font-weight: 400;
 }
 
 .article-body p + p {
@@ -877,7 +934,8 @@ nav a.active {
 .article-body h2 {
   font-family: var(--article-font-display);
   font-size: 1.8rem;
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 1.25rem;
+  font-weight: 600;
 }
 
 .article-body ul,
