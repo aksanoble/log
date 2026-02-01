@@ -1,0 +1,11 @@
+<header>
+  <div class="brand">
+    <a class="brand-link" href="/">{{ site.title | upper }}</a>
+  </div>
+  <nav>
+    {% for item in site.nav %}
+      {% set isActive = page.url == item.url %}
+      <a href="{{ item.url }}"{% if isActive %} class="active"{% endif %}>{{ item.label | upper }}</a>
+    {% endfor %}
+  </nav>
+</header>

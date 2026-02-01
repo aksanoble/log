@@ -1,0 +1,12 @@
+{
+  "name": "kanthi-blog",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf docs && npx @11ty/eleventy",
+    "serve": "rm -rf docs && npx @11ty/eleventy --serve",
+    "clean": "rm -rf docs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

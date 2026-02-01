@@ -1,0 +1,77 @@
+---
+title: Archive
+layout: layouts/base.njk
+bodyClass: page-archive
+wrapperClass: site-frame
+permalink: /archive/
+textureOverlay: true
+---
+{% set yearColors = [
+  "var(--c-brick-red)",
+  "var(--c-brick-orange)",
+  "var(--c-brick-brown)",
+  "var(--c-brick-sky)",
+  "var(--c-brick-olive)",
+  "var(--c-brick-mustard)"
+] %}
+
+{% set colorClasses = [
+  "bg-blue",
+  "bg-sage",
+  "bg-mustard",
+  "bg-sand",
+  "bg-sky",
+  "bg-orange",
+  "bg-olive",
+  "bg-lavender",
+  "bg-red"
+] %}
+
+<main class="archive-container">
+  <section class="controls-bar">
+    <div class="search-wrap">
+      <input type="text" placeholder="Search archive...">
+    </div>
+    <div class="filter-tags">
+      <div class="filter-tag active">All Posts</div>
+      <div class="filter-tag">Essays</div>
+      <div class="filter-tag">Notes</div>
+      <div class="filter-tag">Bookmarks</div>
+      <div class="filter-tag">Tutorials</div>
+      <div class="filter-tag">Thoughts</div>
+      <div class="filter-tag">Snapshots</div>
+    </div>
+  </section>
+
+  {% for yearBlock in collections.archive %}
+    {% set yearColor = yearColors[loop.index0 % yearColors.length] %}
+    <section class="year-block">
+      <div class="year-header" style="background: {{ yearColor }};">
+        <div class="meta" style="color: var(--c-ink); opacity: 1;">Timeline</div>
+        <h2>{{ yearBlock.year }}</h2>
+      </div>
+      <div class="timeline-grid">
+        {% for month in yearBlock.months %}
+          <div class="month-separator">{{ month.name }}</div>
+          {% for post in month.posts %}
+            {% set target = post.data.external or post.url %}
+            {% set isImported = post.data.tags and ("imported" in post.data.tags) %}
+            {% if isImported %}
+              {% set colorClass = colorClasses[loop.index0 % colorClasses.length] %}
+              {% set itemClass = "archive-item " ~ colorClass %}
+            {% else %}
+              {% set itemClass = "archive-item " ~ (post.data.type or "note") %}
+            {% endif %}
+            <a href="{{ target }}" class="{{ itemClass }}">
+              <span class="meta">{{ post.date | dateShort }}</span>
+              <div class="title">{{ post.data.title }}</div>
+              {% if post.data.type == "essay" %}
+                <div class="scribble-mini"></div>
+              {% endif %}
+            </a>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</main>

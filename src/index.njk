@@ -1,0 +1,70 @@
+---
+title: Stream & Blog
+layout: layouts/base.njk
+bodyClass: page-index
+wrapperClass: site-frame
+permalink: /
+---
+<main class="main-grid">
+  <article class="card profile-block">
+    <div class="texture-overlay"></div>
+    <div class="meta">Currently Online</div>
+    <h1 class="profile-title">Digital<br>Garden &amp;<br>Stream</h1>
+    <div class="scribble scribble-circle" style="border-color: #000; top: 20px; right: 20px;"></div>
+  </article>
+
+  {% set colorClasses = [
+    "bg-blue",
+    "bg-sage",
+    "bg-mustard",
+    "bg-sand",
+    "bg-sky",
+    "bg-orange",
+    "bg-olive",
+    "bg-lavender",
+    "bg-red"
+  ] %}
+
+  {% for post in collections.feed %}
+    {% set target = post.data.external or post.url %}
+    {% set isImported = post.data.tags and ("imported" in post.data.tags) %}
+    {% if isImported %}
+      {% set colorClass = colorClasses[loop.index0 % colorClasses.length] %}
+      {% set cardClass = "feed-item " ~ colorClass %}
+    {% else %}
+      {% set cardClass = post.data.cardClass | default("feed-item bg-sand") %}
+    {% endif %}
+    <a class="card {{ cardClass }}" href="{{ target }}">
+      <div class="texture-overlay"></div>
+      <span class="meta">{{ post.data.type | upper }}{% if post.date %} • {{ post.date | dateShort }}{% endif %}</span>
+
+      {% if post.data.type == "snapshot" %}
+        {% if post.data.image %}
+          <img class="feed-image" src="{{ post.data.image }}" alt="{{ post.data.title }}">
+        {% else %}
+          <div class="feed-image-placeholder"></div>
+        {% endif %}
+        {% if post.data.title %}
+          <p class="feed-caption">{{ post.data.title }}</p>
+        {% endif %}
+      {% else %}
+        {% if post.data.title %}
+          <h2 class="feed-content">{{ post.data.title }}</h2>
+        {% endif %}
+        {% if post.data.summary %}
+          <p class="feed-summary">{{ post.data.summary | truncate(110, true, '...') }}</p>
+        {% endif %}
+      {% endif %}
+
+      {% if post.data.type == "essay" %}
+        <div class="scribble scribble-underline" style="background: #fff;"></div>
+      {% endif %}
+      {% if post.data.type == "tutorial" %}
+        <div class="scribble scribble-x"></div>
+      {% endif %}
+      {% if post.data.type == "bookmark" %}
+        <div class="scribble scribble-arrow"></div>
+      {% endif %}
+    </a>
+  {% endfor %}
+</main>

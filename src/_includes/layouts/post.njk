@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+bodyClass: page-post
+wrapperClass: site-frame
+articleFonts: true
+---
+<main class="article-main">
+  <article class="article-block">
+    <div class="article-meta">
+      <span class="article-index">{{ date | dateShort }}</span>
+      <span>{{ type | upper }}</span>
+    </div>
+
+    <h1 class="type-display article-title">{{ title }}</h1>
+
+    {% if summary %}
+      <p class="article-dek">{{ summary }}</p>
+    {% endif %}
+
+    {% if image %}
+      <div class="article-image">
+        <img src="{{ image }}" alt="{{ imageAlt or title }}">
+        {% if badge %}
+          <div class="sticker-badge">{{ badge | safe }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="article-body">
+      {{ content | safe }}
+    </div>
+  </article>
+</main>
