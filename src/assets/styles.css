@@ -1034,10 +1034,27 @@ nav a.active {
     grid-template-columns: 1fr;
   }
 
+  .page-archive .year-block {
+    grid-template-columns: 1fr;
+  }
+
   .year-header,
   .timeline-grid,
   .archive-item {
     grid-column: span 1;
+  }
+
+  .page-archive .timeline-grid {
+    grid-template-columns: 1fr;
+    grid-column: span 1;
+  }
+
+  .page-archive .month-separator {
+    grid-column: span 1;
+  }
+
+  .page-archive .archive-item {
+    min-height: 160px;
   }
 
   .year-header {
