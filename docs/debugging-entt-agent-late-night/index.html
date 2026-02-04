@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+      
+    
+    
+      
+    
+    <title>When the Extension Won&#39;t Talk to the Backend — kanthi</title>
+    <meta name="description" content="A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.">
+    <meta name="robots" content="index,follow">
+    
+      <meta name="author" content="Akshay Kanthi">
+    
+    <link rel="canonical" href="https://kanthi.io/debugging-entt-agent-late-night/">
+    <meta property="og:site_name" content="kanthi">
+    <meta property="og:title" content="When the Extension Won&#39;t Talk to the Backend — kanthi">
+    <meta property="og:description" content="A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.">
+    <meta property="og:url" content="https://kanthi.io/debugging-entt-agent-late-night/">
+    <meta property="og:type" content="article">
+    
+      <meta property="og:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+      <meta property="og:image:alt" content="When the Extension Won&#39;t Talk to the Backend">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+      <meta name="twitter:creator" content="@aksanoble">
+    
+    <meta name="twitter:title" content="When the Extension Won&#39;t Talk to the Backend — kanthi">
+    <meta name="twitter:description" content="A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.">
+    
+      <meta name="twitter:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+    
+    
+      <meta property="article:published_time" content="2026-02-03T00:00:00.000Z">
+      <meta property="article:modified_time" content="2026-02-03T00:00:00.000Z">
+    
+    
+      <link rel="alternate" type="application/rss+xml" title="kanthi RSS" href="https://kanthi.io/feed.xml">
+    
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebSite","name":"kanthi","url":"https://kanthi.io","description":"Personal website and digital garden of Akshay Kanthi","about":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]},"publisher":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+    </script>
+    
+      <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BlogPosting","headline":"When the Extension Won't Talk to the Backend","description":"A late-night debugging session with entt-agent. Tailscale wouldn't connect, the React app showed no data, and I learned how my Chrome extension actually works.","url":"https://kanthi.io/debugging-entt-agent-late-night/","datePublished":"2026-02-03T00:00:00.000Z","dateModified":"2026-02-03T00:00:00.000Z","image":"https://kanthi.io/assets/IMG_9015-01.jpeg","author":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+      </script>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css">
+    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+  </head>
+  <body class="page-post">
+    
+    
+      <div class="site-frame">
+    
+      <header>
+  <div class="brand">
+    <a class="brand-link" href="/">KANTHI</a>
+  </div>
+  <nav>
+    
+      
+      <a href="/archive/">ARCHIVE</a>
+    
+      
+      <a href="/about/">ABOUT</a>
+    
+    <a href="/feed.xml">RSS</a>
+  </nav>
+</header>
+
+      <main class="article-main">
+  <article class="article-block">
+    <div class="article-meta">
+      <span class="article-index">Feb 3</span>
+      <span>LOG</span>
+    </div>
+
+    <h1 class="type-display article-title">When the Extension Won&#39;t Talk to the Backend</h1>
+
+    
+      <p class="article-dek">A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.</p>
+    
+
+    
+
+    <div class="article-body">
+      <p>It's past midnight. The React app is showing nothing. No entities, no visits, no data. Just an empty graph mocking my efforts.</p>
+<p>The server was supposed to be running on my NUC. Key word: supposed.</p>
+<p>First problem: I couldn't even SSH into <code>medha-nuc</code>. Tailscale decided this was a good time to forget I existed. The device was there in the dashboard, but connections just... hung. Tried the usual dance - check the status, restart the daemon, stare at the screen hoping for a miracle.</p>
+<p>Eventually fell back to the local network. Sometimes the fancy overlay network is just extra complexity you don't need at 1am.</p>
+<p>Server started. Added <code>--autorestart</code> because I've learned that lesson before. But the React app still showed nothing.</p>
+<p>&quot;Check the code bro,&quot; I told Claude. (Yes, I talk to my AI assistant like that at 1am.)</p>
+<p>Turns out I had a fundamental misunderstanding of my own architecture. The Chrome extension doesn't just log visits for later - it writes directly to the backend in real-time. Every page I visit, every entity extracted, goes straight to TerminusDB as it happens.</p>
+<p>Which means... if the server was down all evening, there's nothing to show. The extension wasn't queuing data. It was just silently failing.</p>
+<p>Something to fix: local storage fallback when the backend is unreachable. But not tonight.</p>
+
+    </div>
+  </article>
+</main>
+
+      <footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-links">
+      
+        
+          <a href="https://x.com/aksanoble">X</a>
+        
+          <a href="https://linkedin.com/in/akshaykanthi">LinkedIn</a>
+        
+      
+      <a href="/feed.xml">RSS</a>
+    </div>
+  </div>
+</footer>
+
+    
+      </div>
+    
+  </body>
+</html>

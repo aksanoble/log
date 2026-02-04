@@ -9,6 +9,76 @@
       
       
       <item>
+        <title>When the Extension Won&#39;t Talk to the Backend</title>
+        <description><![CDATA[A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.]]></description>
+        <link>https://kanthi.io/debugging-entt-agent-late-night/</link>
+        <guid>https://kanthi.io/debugging-entt-agent-late-night/</guid>
+        <pubDate>Tue, 03 Feb 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>What If Every Website Looked How I Wanted?</title>
+        <description><![CDATA[Started skin-deep - a Chrome extension that uses AI to transform website layouts. Realized CSS injection isn&#39;t enough; you need DOM transformation.]]></description>
+        <link>https://kanthi.io/personalized-web-restyling/</link>
+        <guid>https://kanthi.io/personalized-web-restyling/</guid>
+        <pubDate>Mon, 02 Feb 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Visualizing the Knowledge Graph</title>
+        <description><![CDATA[Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a &#39;visit&#39; should be an entity or a relationship.]]></description>
+        <link>https://kanthi.io/visualizing-knowledge-graph/</link>
+        <guid>https://kanthi.io/visualizing-knowledge-graph/</guid>
+        <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Local LLMs, METAL Crashes, and the Cloud Fallback</title>
+        <description><![CDATA[Tried running LLMs locally with MLX on Apple Silicon. Learned that local inference is promising but fragile. Ended up using OpenRouter as a fallback.]]></description>
+        <link>https://kanthi.io/local-llms-metal-crashes/</link>
+        <guid>https://kanthi.io/local-llms-metal-crashes/</guid>
+        <pubDate>Sat, 31 Jan 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Building a Second Brain from Browsing History</title>
+        <description><![CDATA[Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built automatically.]]></description>
+        <link>https://kanthi.io/second-brain-browsing-history/</link>
+        <guid>https://kanthi.io/second-brain-browsing-history/</guid>
+        <pubDate>Fri, 30 Jan 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>The Gap Between &#39;AI Can Click&#39; and &#39;AI Can Test&#39;</title>
+        <description><![CDATA[Researched AI-powered browser automation. Turns out teaching an AI to click buttons is easy. Teaching it to test your authenticated app is hard.]]></description>
+        <link>https://kanthi.io/ai-testing-session-gap/</link>
+        <guid>https://kanthi.io/ai-testing-session-gap/</guid>
+        <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Claude History Analytics</title>
+        <description><![CDATA[Built scripts to analyze Claude Code conversation history and track daily prompt activity patterns.]]></description>
+        <link>https://kanthi.io/claude-history-analytics/</link>
+        <guid>https://kanthi.io/claude-history-analytics/</guid>
+        <pubDate>Wed, 28 Jan 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
         <title>Selfhosting: Caprover versus Cloudron</title>
         <description><![CDATA[Caveat: I&#39;ve been using Caprover for close to two years now and haven&#39;t had any trouble. I haven&#39;t used cloudron but have been considering it as a Caprover alternative. My top two reasons to look for alternatives. - Automatic backups for all apps. If my...]]></description>
         <link>https://kanthi.io/selfhosting-caprover-versus-cloudron/</link>
