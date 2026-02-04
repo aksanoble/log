@@ -2,9 +2,34 @@ function formatDate(date, options) {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
+function toDate(value) {
+  if (!value) return null;
+  return value instanceof Date ? value : new Date(value);
+}
+
+function toIsoString(value) {
+  const date = toDate(value);
+  if (!date || Number.isNaN(date.getTime())) return "";
+  return date.toISOString();
+}
+
+function toRfc822String(value) {
+  const date = toDate(value);
+  if (!date || Number.isNaN(date.getTime())) return "";
+  return date.toUTCString();
+}
+
+function absoluteUrl(path, base) {
+  if (!path) return "";
+  if (/^https?:\/\//i.test(path)) return path;
+  if (!base) return path;
+  return new URL(path, base).toString();
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  eleventyConfig.addPassthroughCopy("src/favicon.svg");
 
   eleventyConfig.addFilter("dateShort", (date) =>
     formatDate(date, { month: "short", day: "numeric" })
@@ -29,9 +54,28 @@ module.exports = function (eleventyConfig) {
     return `${text.slice(0, length).replace(/\s+\S*$/, "")}...`;
   });
 
+  eleventyConfig.addFilter("absoluteUrl", (path, base) =>
+    absoluteUrl(path, base)
+  );
+  eleventyConfig.addFilter("dateIso", (value) => toIsoString(value));
+  eleventyConfig.addFilter("dateRfc822", (value) => toRfc822String(value));
+  eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+
   eleventyConfig.addCollection("feed", (collectionApi) =>
     collectionApi.getFilteredByTag("post").sort((a, b) => b.date - a.date)
   );
+
+  eleventyConfig.addCollection("sitemap", (collectionApi) => {
+    return collectionApi.getAll().filter((item) => {
+      if (!item.url) return false;
+      if (item.data && item.data.sitemap === false) return false;
+      if (item.data && item.data.eleventyExcludeFromCollections) return false;
+      if (item.url === "/sitemap.xml") return false;
+      if (item.url === "/robots.txt") return false;
+      if (item.url === "/feed.xml") return false;
+      return true;
+    });
+  });
 
   eleventyConfig.addCollection("archive", (collectionApi) => {
     const posts = collectionApi

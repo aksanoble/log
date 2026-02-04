@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kanthi</title>
+    <description>Personal website and digital garden of Akshay Kanthi</description>
+    <link>https://kanthi.io</link>
+    <atom:link href="https://kanthi.io/feed.xml" rel="self" type="application/rss+xml"/>
+    
+      
+      
+      <item>
+        <title>Selfhosting: Caprover versus Cloudron</title>
+        <description><![CDATA[Caveat: I&#39;ve been using Caprover for close to two years now and haven&#39;t had any trouble. I haven&#39;t used cloudron but have been considering it as a Caprover alternative. My top two reasons to look for alternatives. - Automatic backups for all apps. If my...]]></description>
+        <link>https://kanthi.io/selfhosting-caprover-versus-cloudron/</link>
+        <guid>https://kanthi.io/selfhosting-caprover-versus-cloudron/</guid>
+        <pubDate>Fri, 18 Aug 2023 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Baserow self hosting</title>
+        <description><![CDATA[Configuring SMTP on Baserow self hosted instance. I&#39;m currently running a self-hosted instance of baserow which is being shared by my friend and I. Today he needed to reset his password. After a few hours of trying to configure the SMTP credentials it turns out...]]></description>
+        <link>https://kanthi.io/baserow-self-hosting/</link>
+        <guid>https://kanthi.io/baserow-self-hosting/</guid>
+        <pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Linked data</title>
+        <description><![CDATA[Centralised platforms to build knowledge graphs can solve for discoverability of data]]></description>
+        <link>https://kanthi.io/linked-data/</link>
+        <guid>https://kanthi.io/linked-data/</guid>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Tech by the lake</title>
+        <description><![CDATA[It&#39;s such a relief to start writing a blog post when the person nudging you towards writing it has asked you not to spend more than an hour and has assured that no-one is going to read it. Thanks Lobo for that assurance. Phew! 🤧...]]></description>
+        <link>https://kanthi.io/tech-by-the-lake/</link>
+        <guid>https://kanthi.io/tech-by-the-lake/</guid>
+        <pubDate>Wed, 24 Nov 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Madeva Deva Mahadeva Lyrics</title>
+        <description><![CDATA[This song was part of Isha Mahashivarathri 2021 celebrations Lyrics: Girish Jamadagni Maarudda Jadeyavage Jagavudda Haneyavage Gangeyya Katitta Shikeyolage Gangeyya Katitta Shikeyolage Tangyavva Palakuva Maiyya Mailarege Huliya Charmada Hodike Naagarajane Haara Hattu Bhujadavanu Aa Dheera Hattu Bhujadavanu Aa Dheera Namagella Abhayavannu Koduvanu Mallesha O Madeva...]]></description>
+        <link>https://kanthi.io/madeva-deva-mahadeva-lyrics/</link>
+        <guid>https://kanthi.io/madeva-deva-mahadeva-lyrics/</guid>
+        <pubDate>Sun, 04 Jul 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Making Computers Personal Again</title>
+        <description><![CDATA[The computer stopped being personal. Most of the apps I use on my computer today is on the browser. The data I create and view just rests somewhere else. It&#39;s anything but personal. Even development is moving to the cloud with @replit and @glitch What&#39;s...]]></description>
+        <link>https://kanthi.io/making-computers-personal-again/</link>
+        <guid>https://kanthi.io/making-computers-personal-again/</guid>
+        <pubDate>Tue, 23 Mar 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Data Commons</title>
+        <description><![CDATA[You look up a place or a commute on Google Maps. After a couple hours Google casually informs you that the place has an average review of 4 and that if you agree with that rating. It&#39;s right there in the notification. You don&#39;t even...]]></description>
+        <link>https://kanthi.io/data-commons/</link>
+        <guid>https://kanthi.io/data-commons/</guid>
+        <pubDate>Fri, 08 Jan 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Getting started with Customer Support on Telegram</title>
+        <description><![CDATA[Getting started with customer support on Telegram.]]></description>
+        <link>https://kanthi.io/getting-started-with-customer-support-on-telegram/</link>
+        <guid>https://kanthi.io/getting-started-with-customer-support-on-telegram/</guid>
+        <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>Telebooth</title>
+        <description><![CDATA[Telebooth: The easy interface for your Telegram Bot Conversations.]]></description>
+        <link>https://kanthi.io/telebooth/</link>
+        <guid>https://kanthi.io/telebooth/</guid>
+        <pubDate>Sat, 02 Jan 2021 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>her majesty</title>
+        <description><![CDATA[back in your arms mother my heart skips a beat as if to take a pause and inhale you fully once and for all as mind races to admire you with its limited vocabulary sssshh... ssshhh i&#39;m silenced by your majesty leaving nothing but an...]]></description>
+        <link>https://kanthi.io/her-majesty/</link>
+        <guid>https://kanthi.io/her-majesty/</guid>
+        <pubDate>Sun, 13 Sep 2020 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>SASSY</title>
+        <description><![CDATA[A poem explaining software as a service.]]></description>
+        <link>https://kanthi.io/sassy/</link>
+        <guid>https://kanthi.io/sassy/</guid>
+        <pubDate>Sun, 10 May 2020 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>FreeCodeCamp Offline</title>
+        <description><![CDATA[Freecodecamp running offline. An offline space space to learning programming and work on FreeCodeCamp exercises.]]></description>
+        <link>https://kanthi.io/freecodecamp-offline/</link>
+        <guid>https://kanthi.io/freecodecamp-offline/</guid>
+        <pubDate>Tue, 29 Oct 2019 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
+        <title>ReStart</title>
+        <description><![CDATA[Yet another blogging system. Yet another website.]]></description>
+        <link>https://kanthi.io/restart/</link>
+        <guid>https://kanthi.io/restart/</guid>
+        <pubDate>Sun, 13 Oct 2019 00:00:00 GMT</pubDate>
+      </item>
+    
+  </channel>
+</rss>

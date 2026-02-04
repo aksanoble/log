@@ -3,7 +3,69 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+      
+    
+    
+      
+    
     <title>Telebooth — kanthi</title>
+    <meta name="description" content="Telebooth: The easy interface for your Telegram Bot Conversations.">
+    <meta name="robots" content="index,follow">
+    
+      <meta name="author" content="Akshay Kanthi">
+    
+    <link rel="canonical" href="https://kanthi.io/telebooth/">
+    <meta property="og:site_name" content="kanthi">
+    <meta property="og:title" content="Telebooth — kanthi">
+    <meta property="og:description" content="Telebooth: The easy interface for your Telegram Bot Conversations.">
+    <meta property="og:url" content="https://kanthi.io/telebooth/">
+    <meta property="og:type" content="article">
+    
+      <meta property="og:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+      <meta property="og:image:alt" content="Telebooth">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+      <meta name="twitter:creator" content="@aksanoble">
+    
+    <meta name="twitter:title" content="Telebooth — kanthi">
+    <meta name="twitter:description" content="Telebooth: The easy interface for your Telegram Bot Conversations.">
+    
+      <meta name="twitter:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+    
+    
+      <meta property="article:published_time" content="2021-01-02T00:00:00.000Z">
+      <meta property="article:modified_time" content="2021-01-02T00:00:00.000Z">
+    
+    
+      <link rel="alternate" type="application/rss+xml" title="kanthi RSS" href="https://kanthi.io/feed.xml">
+    
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebSite","name":"kanthi","url":"https://kanthi.io","description":"Personal website and digital garden of Akshay Kanthi","about":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]},"publisher":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+    </script>
+    
+      <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BlogPosting","headline":"Telebooth","description":"Telebooth: The easy interface for your Telegram Bot Conversations.","url":"https://kanthi.io/telebooth/","datePublished":"2021-01-02T00:00:00.000Z","dateModified":"2021-01-02T00:00:00.000Z","image":"https://kanthi.io/assets/IMG_9015-01.jpeg","author":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+      </script>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/styles.css">
     
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +85,12 @@
   <nav>
     
       
-      <a href="/">INDEX</a>
-    
-      
       <a href="/archive/">ARCHIVE</a>
     
       
       <a href="/about/">ABOUT</a>
     
+    <a href="/feed.xml">RSS</a>
   </nav>
 </header>
 
@@ -52,7 +112,7 @@
     <div class="article-body">
       <figure class="hero__image hero__image--overlay"><img src="/assets/media/posts/11/telebooth.png" srcset="/assets/media/posts/11/responsive/telebooth-xs.png 300w, /assets/media/posts/11/responsive/telebooth-sm.png 480w, /assets/media/posts/11/responsive/telebooth-md.png 768w, /assets/media/posts/11/responsive/telebooth-lg.png 1024w, /assets/media/posts/11/responsive/telebooth-xl.png 1360w, /assets/media/posts/11/responsive/telebooth-2xl.png 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="1478" width="2584" alt="Telebooth screenshot"><figcaption>The missing interface for your Telegram Bot conversations</figcaption></figure>
 
-<p>At <a href="#INTERNAL_LINK#/post/null" title="https://mountblue.io">MountBlue</a> we process a few thousand candidates who have applied to our Software Engineer trainee position. Our process involves 6-7 communication steps</p><ul><li>Send Candidate acknowledgement email as soon as the candidate applies to the position.</li><li>Send invite to home test</li><li>Send reminder to home test</li><li>Send home test result</li><li>Send invite to live interview</li><li>Send live interview reminder</li><li>Send result of live interview</li><li>Send offer letter</li><li>Send joining date</li></ul><p>Needless to say that all the above communication between the organisation and the candidate is extremely important for both the parties. Currently all the above important notifications are sent via email. But emails may get ignored because of the sheer volume and email landing up in <code>Updates</code> / <code>Promotions</code> section of Gmail. Ideally we'd want to send all these important notifications via a messaging platform such as <code>WhatsApp</code> or <code>Telegram</code>.</p><p>As far as I know there is no straight forward way to get API access on WhatsApp. There's a way out though. Telegram. In my understanding the quickest way to create a separate identity for your business and send messages programmatically on Telegram is via the Telegram Bot API.</p><p>Great. We use Airtable as our ATS. So I wrote an Airtable script to send messages using our Telegram Bot. Problem solved? Except that once the candidate receive the message they would also want to respond back with questions / confirmations. For that a Telegram Web interface would have been really convenient.</p><p>Is there a Telegram Web interface that you can connect with your Bot and hold both 1-1 conversations as well as send programmatic messages?</p><p>Welcome <a href="https://telebooth.kanthi.io">Telebooth</a>. Telebooth is a simple web interface similar to WhatsApp Web or Telegram web that you can connect with your Telegram Bot and hold both 1-1 messages with all your stakeholders as well as send messages in bulk. It might be particularly relevant for businesses / individuals who still don't want a full fledged CRM and can do with a simple web interface with 1-2 people in the organisation managing all communication.</p><p>What's more Telebooth is <a href="https://github.com/aksanoble/telebooth">free and open-source</a>. Self host and use it with no restrictions on the number of messages or users.</p><p>Is this relevant to you? Do you have any questions or feedback? Please let me know.</p></div>
+<p>At <a href="https://mountblue.io">MountBlue</a> we process a few thousand candidates who have applied to our Software Engineer trainee position. Our process involves 6-7 communication steps</p><ul><li>Send Candidate acknowledgement email as soon as the candidate applies to the position.</li><li>Send invite to home test</li><li>Send reminder to home test</li><li>Send home test result</li><li>Send invite to live interview</li><li>Send live interview reminder</li><li>Send result of live interview</li><li>Send offer letter</li><li>Send joining date</li></ul><p>Needless to say that all the above communication between the organisation and the candidate is extremely important for both the parties. Currently all the above important notifications are sent via email. But emails may get ignored because of the sheer volume and email landing up in <code>Updates</code> / <code>Promotions</code> section of Gmail. Ideally we'd want to send all these important notifications via a messaging platform such as <code>WhatsApp</code> or <code>Telegram</code>.</p><p>As far as I know there is no straight forward way to get API access on WhatsApp. There's a way out though. Telegram. In my understanding the quickest way to create a separate identity for your business and send messages programmatically on Telegram is via the Telegram Bot API.</p><p>Great. We use Airtable as our ATS. So I wrote an Airtable script to send messages using our Telegram Bot. Problem solved? Except that once the candidate receive the message they would also want to respond back with questions / confirmations. For that a Telegram Web interface would have been really convenient.</p><p>Is there a Telegram Web interface that you can connect with your Bot and hold both 1-1 conversations as well as send programmatic messages?</p><p>Welcome <a href="https://telebooth.kanthi.io">Telebooth</a>. Telebooth is a simple web interface similar to WhatsApp Web or Telegram web that you can connect with your Telegram Bot and hold both 1-1 messages with all your stakeholders as well as send messages in bulk. It might be particularly relevant for businesses / individuals who still don't want a full fledged CRM and can do with a simple web interface with 1-2 people in the organisation managing all communication.</p><p>What's more Telebooth is <a href="https://github.com/aksanoble/telebooth">free and open-source</a>. Self host and use it with no restrictions on the number of messages or users.</p><p>Is this relevant to you? Do you have any questions or feedback? Please let me know.</p></div>
 
     </div>
   </article>
@@ -60,7 +120,6 @@
 
       <footer class="site-footer">
   <div class="footer-content">
-    <div class="footer-brand">kanthi</div>
     <div class="footer-links">
       
         
@@ -69,6 +128,7 @@
           <a href="https://linkedin.com/in/akshaykanthi">LinkedIn</a>
         
       
+      <a href="/feed.xml">RSS</a>
     </div>
   </div>
 </footer>

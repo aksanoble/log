@@ -1,0 +1,27 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.title }}
+{{ site.description }}
+
+## About
+- {{ "/about/" | absoluteUrl(site.url) }}
+
+## Main
+- {{ "/" | absoluteUrl(site.url) }}
+- {{ "/archive/" | absoluteUrl(site.url) }}
+- {{ "/feed.xml" | absoluteUrl(site.url) }}
+
+## Recent posts
+{% for item in collections.feed | slice(0, 12) %}
+- {{ item.url | absoluteUrl(site.url) }}{% if item.data.title %} — {{ item.data.title }}{% endif %}
+{% endfor %}
+
+## Author
+- {{ site.author.name }}{% if site.author.url %} — {{ site.author.url | absoluteUrl(site.url) }}{% endif %}
+{% if site.author.sameAs and site.author.sameAs.length %}
+{% for link in site.author.sameAs %}
+- {{ link }}
+{% endfor %}
+{% endif %}

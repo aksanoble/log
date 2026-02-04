@@ -1,12 +1,12 @@
 <footer class="site-footer">
   <div class="footer-content">
-    <div class="footer-brand">{{ site.title }}</div>
     <div class="footer-links">
       {% if site.socials and site.socials.length %}
         {% for social in site.socials %}
           <a href="{{ social.url }}">{{ social.label }}</a>
         {% endfor %}
       {% endif %}
+      <a href="/feed.xml">RSS</a>
     </div>
   </div>
 </footer>

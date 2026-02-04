@@ -1,13 +1,25 @@
 {
   "title": "kanthi",
-  "description": "Digital garden and stream",
+  "description": "Personal website and digital garden of Akshay Kanthi",
+  "url": "https://kanthi.io",
+  "defaultImage": "/assets/IMG_9015-01.jpeg",
+  "defaultImageWidth": 1200,
+  "defaultImageHeight": 630,
+  "author": {
+    "name": "Akshay Kanthi",
+    "url": "/about/",
+    "twitter": "aksanoble",
+    "sameAs": [
+      "https://x.com/aksanoble",
+      "https://linkedin.com/in/akshaykanthi"
+    ]
+  },
   "useArticleFonts": true,
   "socials": [
     { "label": "X", "url": "https://x.com/aksanoble" },
     { "label": "LinkedIn", "url": "https://linkedin.com/in/akshaykanthi" }
   ],
   "nav": [
-    { "label": "Index", "url": "/" },
     { "label": "Archive", "url": "/archive/" },
     { "label": "About", "url": "/about/" }
   ]

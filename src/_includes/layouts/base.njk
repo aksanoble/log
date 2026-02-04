@@ -3,7 +3,100 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {% if title %}
+      {% set pageTitle = title ~ " — " ~ site.title %}
+    {% else %}
+      {% set pageTitle = site.title %}
+    {% endif %}
+    {% set isPost = tags and ("post" in tags) %}
+    {% set rawDescription = summary or description or (content | excerpt(160)) or site.description %}
+    {% set seoDescription = rawDescription | truncate(160) | trim %}
+    {% if external %}
+      {% set canonicalUrl = external %}
+    {% else %}
+      {% set canonicalUrl = page.url | absoluteUrl(site.url) %}
+    {% endif %}
+    {% set seoImage = image or site.defaultImage %}
+    {% set seoImageAlt = imageAlt or title or site.title %}
+    {% if noindex %}
+      {% set robotsContent = "noindex,nofollow" %}
+    {% else %}
+      {% set robotsContent = "index,follow" %}
+    {% endif %}
+    {% if site.author and site.author.url %}
+      {% set authorUrl = site.author.url | absoluteUrl(site.url) %}
+    {% else %}
+      {% set authorUrl = "/about/" | absoluteUrl(site.url) %}
+    {% endif %}
+    {% if site.author and site.author.name %}
+      {% set authorSchema = {
+        "@type": "Person",
+        "name": site.author.name,
+        "url": authorUrl,
+        "sameAs": site.author.sameAs
+      } %}
+    {% endif %}
+    <title>{{ pageTitle | escape }}</title>
+    <meta name="description" content="{{ seoDescription | escape }}">
+    <meta name="robots" content="{{ robotsContent }}">
+    {% if site.author and site.author.name %}
+      <meta name="author" content="{{ site.author.name | escape }}">
+    {% endif %}
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:title" content="{{ pageTitle | escape }}">
+    <meta property="og:description" content="{{ seoDescription | escape }}">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+    <meta property="og:type" content="{{ "article" if isPost else "website" }}">
+    {% if seoImage %}
+      <meta property="og:image" content="{{ seoImage | absoluteUrl(site.url) }}">
+      <meta property="og:image:alt" content="{{ seoImageAlt | escape }}">
+      <meta property="og:image:width" content="{{ site.defaultImageWidth or 1200 }}">
+      <meta property="og:image:height" content="{{ site.defaultImageHeight or 630 }}">
+    {% endif %}
+    <meta name="twitter:card" content="{{ "summary_large_image" if seoImage else "summary" }}">
+    {% if site.author and site.author.twitter %}
+      <meta name="twitter:creator" content="@{{ site.author.twitter }}">
+    {% endif %}
+    <meta name="twitter:title" content="{{ pageTitle | escape }}">
+    <meta name="twitter:description" content="{{ seoDescription | escape }}">
+    {% if seoImage %}
+      <meta name="twitter:image" content="{{ seoImage | absoluteUrl(site.url) }}">
+    {% endif %}
+    {% if isPost %}
+      <meta property="article:published_time" content="{{ page.date | dateIso }}">
+      <meta property="article:modified_time" content="{{ (updated or page.date) | dateIso }}">
+    {% endif %}
+    {% if site.url %}
+      <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
+    {% endif %}
+    <script type="application/ld+json">
+      {{ {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": site.title,
+        "url": site.url,
+        "description": site.description,
+        "about": authorSchema,
+        "publisher": authorSchema
+      } | json | safe }}
+    </script>
+    {% if isPost %}
+      <script type="application/ld+json">
+        {{ {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": title,
+          "description": seoDescription,
+          "url": canonicalUrl,
+          "datePublished": (page.date | dateIso),
+          "dateModified": ((updated or page.date) | dateIso),
+          "image": (seoImage | absoluteUrl(site.url)),
+          "author": authorSchema
+        } | json | safe }}
+      </script>
+    {% endif %}
+    <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/styles.css' | url }}">
     {% if site.useArticleFonts or articleFonts %}
       <link rel="preconnect" href="https://fonts.googleapis.com">

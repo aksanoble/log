@@ -7,5 +7,6 @@
       {% set isActive = page.url == item.url %}
       <a href="{{ item.url }}"{% if isActive %} class="active"{% endif %}>{{ item.label | upper }}</a>
     {% endfor %}
+    <a href="/feed.xml">RSS</a>
   </nav>
 </header>
