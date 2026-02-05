@@ -1,0 +1,414 @@
+<html lang="en" vid="0">
+
+<head vid="1">
+  <meta charset="UTF-8" vid="2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+  <title vid="4">Archive — Alexandria.log</title>
+  <style vid="5">
+    :root {
+      --c-void: #080808;
+      --c-ink: #000000;
+      --c-brick-red: #E24A3D;
+      --c-brick-sage: #9ABCA9;
+      --c-brick-blue: #0C385E;
+      --c-brick-sand: #E6DE85;
+      --c-brick-olive: #34422A;
+      --c-brick-orange: #D65A22;
+      --c-brick-lavender: #E0D3D6;
+      --c-brick-mustard: #EBC22E;
+      --c-brick-brown: #8B6B3D;
+      --c-brick-sky: #2B769C;
+
+      --f-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --f-mono: 'Courier New', Courier, monospace;
+
+      --noise-opacity: 0.08;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--c-void);
+      color: var(--c-ink);
+      font-family: var(--f-sans);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .texture-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: var(--noise-opacity);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    header {
+      background: var(--c-void);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      opacity: 1;
+    }
+
+    .archive-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      background-color: var(--c-ink);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+    }
+
+
+    .controls-bar {
+      grid-column: span 12;
+      background: var(--c-brick-sand);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .search-wrap {
+      width: 100%;
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--c-ink);
+      font-family: var(--f-sans);
+      font-size: 3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      outline: none;
+      padding: 0.5rem 0;
+    }
+
+    .search-wrap input::placeholder {
+      color: rgba(0, 0, 0, 0.15);
+    }
+
+    .filter-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tag {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--c-ink);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tag:hover,
+    .filter-tag.active {
+      background: var(--c-ink);
+      color: var(--c-brick-sand);
+    }
+
+
+    .year-block {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+      background: var(--c-ink);
+    }
+
+    .year-header {
+      grid-column: span 2;
+      background: var(--c-brick-red);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .year-header h2 {
+      font-size: 4rem;
+      margin: 0;
+      line-height: 0.8;
+    }
+
+    .timeline-grid {
+      grid-column: span 10;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 1px;
+    }
+
+    .archive-item {
+      grid-column: span 2;
+      background: #fff;
+      padding: 1.2rem;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      text-decoration: none;
+      color: var(--c-ink);
+      transition: transform 0.1s;
+    }
+
+    .archive-item:hover {
+      z-index: 10;
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .archive-item.essay {
+      background: var(--c-brick-blue);
+      color: #fff;
+    }
+
+    .archive-item.note {
+      background: var(--c-brick-sage);
+    }
+
+    .archive-item.bookmark {
+      background: var(--c-brick-mustard);
+    }
+
+    .archive-item.tutorial {
+      background: var(--c-brick-sand);
+    }
+
+    .archive-item.thought {
+      background: var(--c-brick-sky);
+      color: #fff;
+    }
+
+    .meta {
+      font-family: var(--f-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.1;
+      margin: 0.5rem 0;
+      text-transform: uppercase;
+    }
+
+    .month-separator {
+      grid-column: span 10;
+      background: var(--c-brick-lavender);
+      padding: 0.5rem 1.5rem;
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+    }
+
+    .scribble-mini {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 15px;
+      height: 15px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      opacity: 0.4;
+    }
+
+    @media (max-width: 1024px) {
+      .year-header {
+        grid-column: span 3;
+      }
+
+      .timeline-grid {
+        grid-column: span 9;
+      }
+
+      .archive-item {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .archive-container {
+        grid-template-columns: 1fr;
+      }
+
+      .year-header,
+      .timeline-grid,
+      .archive-item {
+        grid-column: span 1;
+      }
+
+      .year-header {
+        height: 100px;
+      }
+
+      .search-wrap input {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body vid="6">
+  <div class="texture-overlay" vid="7"></div>
+
+  <header vid="8">
+    <div class="brand" vid="9">ALEXANDRIA.LOG</div>
+    <nav vid="10">
+      <a href="#" vid="11">INDEX</a>
+      <a href="#" class="active" vid="12">ARCHIVE</a>
+      <a href="#" vid="13">ABOUT</a>
+    </nav>
+  </header>
+
+  <main class="archive-container" vid="14">
+
+    <section class="controls-bar" vid="15">
+      <div class="search-wrap" vid="16">
+        <input type="text" placeholder="Search archive..." vid="17">
+      </div>
+      <div class="filter-tags" vid="18">
+        <div class="filter-tag active" vid="19">All Posts</div>
+        <div class="filter-tag" vid="20">Essays</div>
+        <div class="filter-tag" vid="21">Notes</div>
+        <div class="filter-tag" vid="22">Bookmarks</div>
+        <div class="filter-tag" vid="23">Tutorials</div>
+        <div class="filter-tag" vid="24">Thoughts</div>
+      </div>
+    </section>
+
+
+    <section class="year-block" vid="25">
+      <div class="year-header" vid="26">
+        <div class="meta" style="color: var(--c-ink); opacity: 1;" vid="27">Timeline</div>
+        <h2 vid="28">2024</h2>
+      </div>
+      <div class="timeline-grid" vid="29">
+        <div class="month-separator" vid="30">October</div>
+        <a href="#" class="archive-item essay" vid="31">
+          <span class="meta" vid="32">Oct 12</span>
+          <div class="title" vid="33">The Return of the Personal Web</div>
+          <div class="scribble-mini" vid="34"></div>
+        </a>
+        <a href="#" class="archive-item note" vid="35">
+          <span class="meta" vid="36">Oct 09</span>
+          <div class="title" vid="37">Grid System Refactor complete</div>
+        </a>
+        <a href="#" class="archive-item bookmark" vid="38">
+          <span class="meta" vid="39">Oct 02</span>
+          <div class="title" vid="40">Hyper-Text Mechanics</div>
+        </a>
+
+        <div class="month-separator" vid="41">September</div>
+        <a href="#" class="archive-item tutorial" vid="42">
+          <span class="meta" vid="43">Sep 24</span>
+          <div class="title" vid="44">CSS Grid Level 3 Subgrid</div>
+        </a>
+        <a href="#" class="archive-item thought" vid="45">
+          <span class="meta" vid="46">Sep 15</span>
+          <div class="title" vid="47">Software Gardening</div>
+        </a>
+        <a href="#" class="archive-item note" vid="48">
+          <span class="meta" vid="49">Sep 01</span>
+          <div class="title" vid="50">Late summer workspace setup</div>
+        </a>
+      </div>
+    </section>
+
+
+    <section class="year-block" vid="51">
+      <div class="year-header" style="background: var(--c-brick-orange);" vid="52">
+        <div class="meta" style="color: var(--c-ink); opacity: 1;" vid="53">Timeline</div>
+        <h2 vid="54">2023</h2>
+      </div>
+      <div class="timeline-grid" vid="55">
+        <div class="month-separator" vid="56">December</div>
+        <a href="#" class="archive-item essay" vid="57">
+          <span class="meta" vid="58">Dec 28</span>
+          <div class="title" vid="59">Year in Review: Static Sites</div>
+          <div class="scribble-mini" vid="60"></div>
+        </a>
+        <a href="#" class="archive-item bookmark" vid="61">
+          <span class="meta" vid="62">Dec 15</span>
+          <div class="title" vid="63">Interface As Tool</div>
+        </a>
+        <a href="#" class="archive-item note" vid="64">
+          <span class="meta" vid="65">Dec 04</span>
+          <div class="title" vid="66">Migration to local-first</div>
+        </a>
+
+        <div class="month-separator" vid="67">November</div>
+        <a href="#" class="archive-item tutorial" vid="68">
+          <span class="meta" vid="69">Nov 12</span>
+          <div class="title" vid="70">Recursive SVG Patterns</div>
+        </a>
+        <a href="#" class="archive-item note" style="background: var(--c-brick-olive); color: var(--c-brick-sand);"
+          vid="71">
+          <span class="meta" vid="72">Nov 02</span>
+          <div class="title" vid="73">Reading: A Pattern Language</div>
+        </a>
+      </div>
+    </section>
+
+
+    <section class="year-block" vid="74">
+      <div class="year-header" style="background: var(--c-brick-brown); color: #fff;" vid="75">
+        <div class="meta" style="color: #fff; opacity: 1;" vid="76">Timeline</div>
+        <h2 style="color: #fff;" vid="77">2022</h2>
+      </div>
+      <div class="timeline-grid" vid="78">
+        <div class="month-separator" vid="79">January</div>
+        <a href="#" class="archive-item essay" vid="80">
+          <span class="meta" vid="81">Jan 01</span>
+          <div class="title" vid="82">Genesis: The First Log</div>
+          <div class="scribble-mini" vid="83"></div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

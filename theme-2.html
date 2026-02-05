@@ -1,0 +1,521 @@
+<html lang="en" vid="0">
+
+<head vid="1">
+  <meta charset="UTF-8" vid="2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+  <title vid="4">Stream &amp; Blog</title>
+  <style vid="5">
+    :root {
+
+      --c-void: #080808;
+      --c-ink: #000000;
+
+      --c-brick-red: #E24A3D;
+      --c-brick-sage: #9ABCA9;
+      --c-brick-blue: #0C385E;
+      --c-brick-sand: #E6DE85;
+      --c-brick-olive: #34422A;
+      --c-brick-orange: #D65A22;
+      --c-brick-lavender: #E0D3D6;
+      --c-brick-mustard: #EBC22E;
+      --c-brick-brown: #8B6B3D;
+      --c-brick-sky: #2B769C;
+
+      --f-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --f-mono: 'Courier New', Courier, monospace;
+
+      --border-width: 1px;
+      --noise-opacity: 0.08;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--c-void);
+      color: var(--c-ink);
+      font-family: var(--f-sans);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+
+    .texture-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: var(--noise-opacity);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.3;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .meta {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+
+    header {
+      background: var(--c-void);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+      background-color: var(--c-ink);
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      border-left: 1px solid var(--c-ink);
+      border-right: 1px solid var(--c-ink);
+    }
+
+
+    .card {
+      position: relative;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+      transition: transform 0.1s;
+      overflow: hidden;
+    }
+
+    .card:hover .scribble {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+
+    .bg-red {
+      background-color: var(--c-brick-red);
+    }
+
+    .bg-sage {
+      background-color: var(--c-brick-sage);
+    }
+
+    .bg-blue {
+      background-color: var(--c-brick-blue);
+      color: #fff;
+    }
+
+    .bg-sand {
+      background-color: var(--c-brick-sand);
+    }
+
+    .bg-olive {
+      background-color: var(--c-brick-olive);
+      color: #E6DE85;
+    }
+
+    .bg-orange {
+      background-color: var(--c-brick-orange);
+    }
+
+    .bg-lavender {
+      background-color: var(--c-brick-lavender);
+    }
+
+    .bg-mustard {
+      background-color: var(--c-brick-mustard);
+    }
+
+    .bg-sky {
+      background-color: var(--c-brick-sky);
+      color: #fff;
+    }
+
+
+    .composer {
+      grid-column: span 6;
+      background-color: var(--c-brick-sand);
+      padding: 2rem;
+    }
+
+    .composer textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-family: var(--f-sans);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--c-ink);
+      resize: none;
+      outline: none;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      height: 3em;
+    }
+
+    .composer textarea::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
+
+    .composer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding-top: 1rem;
+    }
+
+    .btn-post {
+      background: var(--c-ink);
+      color: var(--c-brick-sand);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-family: var(--f-mono);
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-post:hover {
+      transform: translateY(-2px);
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .profile-block {
+      grid-column: span 6;
+      background-color: var(--c-brick-red);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-title {
+      font-size: 4rem;
+      line-height: 0.85;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .feed-item {
+      grid-column: span 3;
+    }
+
+    .feed-item.large {
+      grid-column: span 4;
+      font-size: 1.25rem;
+    }
+
+    .feed-item.small {
+      grid-column: span 2;
+    }
+
+    .feed-item.tall {
+      grid-row: span 2;
+    }
+
+    .feed-content {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .large .feed-content {
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+
+    .scribble {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      mix-blend-mode: multiply;
+    }
+
+    .scribble-circle {
+      width: 100px;
+      height: 100px;
+      border: 1.5px solid var(--c-ink);
+      border-radius: 50%;
+      top: 10%;
+      right: 10%;
+      transform: scale(0.9) rotate(-5deg);
+    }
+
+    .scribble-underline {
+      bottom: 2rem;
+      left: 1.5rem;
+      width: 60px;
+      height: 4px;
+      background: var(--c-ink);
+      transform: skewX(-20deg);
+    }
+
+    .scribble-x {
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      transform: translate(-50%, -50%);
+    }
+
+    .scribble-x::before,
+    .scribble-x::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--c-ink);
+    }
+
+    .scribble-x::before {
+      transform: rotate(45deg);
+    }
+
+    .scribble-x::after {
+      transform: rotate(-45deg);
+    }
+
+    .scribble-arrow {
+      bottom: 1rem;
+      right: 1rem;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid var(--c-ink);
+    }
+
+
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .feed-item,
+      .feed-item.small,
+      .feed-item.large {
+        grid-column: span 3;
+      }
+
+      .composer,
+      .profile-block {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feed-item,
+      .feed-item.small,
+      .feed-item.large,
+      .composer,
+      .profile-block {
+        grid-column: span 1;
+      }
+
+      .profile-title {
+        font-size: 3rem;
+      }
+
+      header {
+        padding: 0.75rem 1rem;
+      }
+    }
+
+
+    .bg-blue .meta,
+    .bg-blue p,
+    .bg-sky .meta,
+    .bg-sky p {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body vid="6">
+
+  <header vid="7">
+    <div class="brand" vid="8">ALEXANDRIA.LOG</div>
+    <nav vid="9">
+      <a href="#" vid="10">INDEX</a>
+      <a href="#" vid="11">ARCHIVE</a>
+      <a href="#" vid="12">ABOUT</a>
+    </nav>
+  </header>
+
+  <main class="main-grid" vid="13">
+
+
+    <article class="card profile-block" vid="14">
+      <div class="texture-overlay" vid="15"></div>
+      <div class="meta" vid="16">Currently Online</div>
+      <h1 class="profile-title" vid="17">Digital<br vid="18">Garden &amp;<br vid="19">Stream</h1>
+      <div class="scribble scribble-circle" style="border-color: #000; top: 20px; right: 20px;" vid="20"></div>
+    </article>
+
+
+    <div class="card composer" vid="21">
+      <div class="texture-overlay" vid="22"></div>
+      <textarea placeholder="Broadcast an update..." vid="23"></textarea>
+      <div class="composer-actions" vid="24">
+        <span class="meta" style="color:var(--c-ink); opacity: 0.5;" vid="25">MARKDOWN SUPPORTED</span>
+        <button class="btn-post" vid="26">PUBLISH</button>
+      </div>
+    </div>
+
+
+    <article class="card feed-item large bg-blue" vid="27">
+      <div class="texture-overlay" vid="28"></div>
+      <span class="meta" vid="29">ESSAY • 2 HRS AGO</span>
+      <h2 class="feed-content" vid="30">The Return of the Personal Web</h2>
+      <p vid="31">Why we are moving back to owned platforms and static sites in 2024.</p>
+      <div class="scribble scribble-underline" style="background: #fff;" vid="32"></div>
+    </article>
+
+
+    <article class="card feed-item bg-sage" vid="33">
+      <div class="texture-overlay" vid="34"></div>
+      <span class="meta" vid="35">NOTE • 12 MIN AGO</span>
+      <p class="feed-content" vid="36">Just pushed the new grid system. Feels much more stable on mobile viewports. 📐
+      </p>
+    </article>
+
+
+    <article class="card feed-item bg-mustard" vid="37">
+      <div class="texture-overlay" vid="38"></div>
+      <span class="meta" vid="39">BOOKMARK</span>
+      <h3 class="feed-content" vid="40">Hyper-Text Mechanics</h3>
+      <div class="scribble scribble-arrow" vid="41"></div>
+    </article>
+
+
+    <article class="card feed-item bg-lavender tall" vid="42">
+      <div class="texture-overlay" vid="43"></div>
+      <span class="meta" vid="44">SNAPSHOT</span>
+      <div style="flex-grow: 1; background: #000; margin: 0.5rem -1.5rem; opacity: 0.1;" vid="45"></div>
+      <p style="margin-top: 1rem; font-size: 0.9rem;" vid="46">Workspace setup v4.0</p>
+    </article>
+
+
+    <article class="card feed-item small bg-orange" vid="47">
+      <div class="texture-overlay" vid="48"></div>
+      <span class="meta" vid="49">STATUS</span>
+      <p class="feed-content" style="font-size: 1rem;" vid="50">Compiling...</p>
+    </article>
+
+
+    <article class="card feed-item small bg-olive" vid="51">
+      <div class="texture-overlay" vid="52"></div>
+      <span class="meta" style="color: #E6DE85;" vid="53">MUSIC</span>
+      <p class="feed-content" style="color: #E6DE85;" vid="54">Now Playing: Aphex Twin</p>
+    </article>
+
+
+    <article class="card feed-item large bg-sand" vid="55">
+      <div class="texture-overlay" vid="56"></div>
+      <span class="meta" vid="57">TUTORIAL • YESTERDAY</span>
+      <h2 class="feed-content" vid="58">CSS Grid Level 3</h2>
+      <p vid="59">Exploring the new subgrid capabilities in modern browsers.</p>
+      <div class="scribble scribble-x" vid="60"></div>
+    </article>
+
+
+    <article class="card feed-item bg-sky" vid="61">
+      <div class="texture-overlay" vid="62"></div>
+      <span class="meta" vid="63">THOUGHT</span>
+      <p class="feed-content" vid="64">Design systems are just gardening guides for software.</p>
+    </article>
+
+
+    <article class="card feed-item bg-brick-red bg-red" vid="65">
+      <div class="texture-overlay" vid="66"></div>
+      <span class="meta" vid="67">ALERT</span>
+      <h3 class="feed-content" vid="68">Server Migration Complete</h3>
+    </article>
+
+    <article class="card feed-item small bg-brick-brown" style="background-color: var(--c-brick-brown); color: #fff;"
+      vid="69">
+      <div class="texture-overlay" vid="70"></div>
+      <span class="meta" vid="71">ARCHIVE</span>
+      <p vid="72">2023</p>
+    </article>
+
+    <article class="card feed-item small bg-brick-brown" style="background-color: #222; color: #fff;" vid="73">
+      <div class="texture-overlay" vid="74"></div>
+      <span class="meta" vid="75">ARCHIVE</span>
+      <p vid="76">2022</p>
+    </article>
+
+  </main>
+
+
+</body>
+
+</html>

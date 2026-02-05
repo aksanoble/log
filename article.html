@@ -1,0 +1,495 @@
+<html lang="en" vid="0">
+
+<head vid="1">
+  <meta charset="UTF-8" vid="2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+  <title vid="4">Matcha Editorial</title>
+  <style vid="5">
+    :root {
+
+      --c-cream: #F5F3EB;
+      --c-lilac: #E0C8FF;
+      --c-green-dark: #002910;
+      --c-green-mid: #2A5A3B;
+
+
+
+      --font-display: 'Playfair Display', Georgia, serif;
+
+      --font-body: 'DM Sans', Helvetica, Arial, sans-serif;
+
+      --font-script: 'Dawning of a New Day', cursive;
+
+
+      --radius-soft: 24px;
+      --radius-hard: 0px;
+      --border-width: 1.5px;
+      --space-unit: 8px;
+      --layout-max-width: 430px;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--c-green-dark);
+    }
+
+
+    .app-frame {
+      background-color: var(--c-cream);
+      width: 100%;
+      max-width: var(--layout-max-width);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .type-display {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .type-sans-bold {
+      font-family: var(--font-body);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .type-script {
+      font-family: var(--font-script);
+      font-size: 1.5rem;
+      transform: rotate(-4deg);
+      display: inline-block;
+    }
+
+
+    header {
+      padding: 24px 20px 16px;
+      border-bottom: var(--border-width) solid var(--c-green-dark);
+      position: sticky;
+      top: 0;
+      background: var(--c-cream);
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .brand {
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 1.25rem;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand span {
+      display: block;
+    }
+
+    .date-badge {
+      font-size: 0.75rem;
+      border: var(--border-width) solid var(--c-green-dark);
+      padding: 4px 8px;
+      border-radius: 50px;
+      font-weight: 700;
+    }
+
+
+    main {
+      padding: 0;
+      padding-bottom: 80px;
+    }
+
+
+    .article-block {
+      padding: 32px 20px;
+      border-bottom: var(--border-width) solid var(--c-green-dark);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    .article-meta::before {
+      content: '01';
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      border-right: var(--border-width) solid var(--c-green-dark);
+      padding-right: 12px;
+      line-height: 1;
+    }
+
+    .article-title {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+
+    .article-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background-color: #e5e5e5;
+      border: var(--border-width) solid var(--c-green-dark);
+      border-radius: var(--radius-soft);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) sepia(0.1);
+    }
+
+    .sticker-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--c-lilac);
+      color: var(--c-green-dark);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: var(--border-width) solid var(--c-green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      line-height: 1;
+      transform: rotate(12deg);
+      box-shadow: 2px 2px 0 var(--c-green-dark);
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .article-quote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.2;
+      padding-left: 20px;
+      border-left: 3px solid var(--c-green-dark);
+      margin: 32px 0;
+      font-style: italic;
+    }
+
+
+    .short-post {
+      background-color: var(--c-lilac);
+      padding: 32px 20px;
+      border-bottom: var(--border-width) solid var(--c-green-dark);
+      position: relative;
+    }
+
+    .short-post-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--c-cream);
+      border: var(--border-width) solid var(--c-green-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .short-post-content {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .short-post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border: var(--border-width) solid var(--c-green-dark);
+      border-radius: 20px;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+
+    .picture-post {
+      padding: 20px;
+      border-bottom: var(--border-width) solid var(--c-green-dark);
+    }
+
+    .picture-frame {
+      border: var(--border-width) solid var(--c-green-dark);
+      border-radius: var(--radius-soft) var(--radius-soft) 0 0;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      position: relative;
+    }
+
+    .picture-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .picture-caption-box {
+      border: var(--border-width) solid var(--c-green-dark);
+      border-top: 0;
+      border-radius: 0 0 var(--radius-soft) var(--radius-soft);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+    }
+
+    .caption-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .caption-number {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1;
+      opacity: 0.5;
+    }
+
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: var(--layout-max-width);
+      background: var(--c-cream);
+      border-top: var(--border-width) solid var(--c-green-dark);
+      display: flex;
+      justify-content: space-around;
+      padding: 16px 0 24px;
+      z-index: 200;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .nav-item.active {
+      opacity: 1;
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--c-green-dark);
+      border-radius: 50%;
+    }
+
+
+    .icon-svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--c-green-dark);
+      stroke-width: 2;
+      fill: none;
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" vid="6">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="7">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&amp;family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+    rel="stylesheet" vid="8">
+</head>
+
+<body vid="9">
+
+  <div class="app-frame" vid="10">
+
+    <header vid="11">
+      <div class="brand" vid="12">
+        <span vid="13">Matcha</span>
+        <span vid="14">Matcha</span>
+      </div>
+      <div class="date-badge" vid="15">
+        KYOTO — 2024
+      </div>
+    </header>
+
+    <main vid="16">
+
+      <article class="article-block" vid="17">
+        <div class="article-meta" vid="18">
+          <span vid="19">EDITORIAL</span>
+          <span vid="20">•</span>
+          <span vid="21">5 MIN READ</span>
+        </div>
+
+        <h1 class="type-display article-title" vid="22">The subtle art of the ceremonial pour</h1>
+
+        <div class="article-image" vid="23">
+          <img
+            src="https://images.unsplash.com/photo-1536615004552-0743b0c00069?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+            alt="Matcha preparation" vid="24">
+          <div class="sticker-badge" vid="25">
+            UJICHA<br vid="26">GRADE
+          </div>
+        </div>
+
+        <div class="article-body" vid="27">
+          <p vid="28">There is a silence that falls just before the bamboo whisk touches the water. It is not an empty
+            silence, but one filled with anticipation. In Uji, the morning mist clears to reveal fields of emerald
+            green.</p>
+
+          <div class="article-quote" vid="29">
+            "The tea does not ask to be drunk. It asks to be understood."
+          </div>
+
+          <p vid="30">True matcha isn't just a beverage; it's a suspension of reality. The fine powder, ground between
+            stone mills for hours, captures the very essence of the shade-grown leaf. To drink it is to consume the
+            landscape itself.</p>
+        </div>
+
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--c-green-dark); padding-top: 16px;"
+          vid="31">
+          <span class="type-script" vid="32">Sourced in Japan</span>
+          <button class="action-pill" vid="33">Read Full Story</button>
+        </div>
+      </article>
+
+
+      <article class="short-post" vid="34">
+        <div class="short-post-header" vid="35">
+          <div class="avatar" vid="36">M</div>
+          <div style="font-size: 0.8rem; font-weight: 700;" vid="37">
+            <div vid="38">@matchamatcha</div>
+            <div style="font-weight: 400; opacity: 0.7;" vid="39">2h ago</div>
+          </div>
+        </div>
+
+        <div class="short-post-content" vid="40">
+          Reminder: If your water is boiling, you are burning the leaves. 80°C is the sweet spot. Be gentle. 🍵
+        </div>
+
+        <div class="short-post-footer" vid="41">
+          <div class="type-script" style="font-size: 1.2rem;" vid="42">Brew Guide</div>
+          <div style="display: flex; gap: 8px;" vid="43">
+            <span class="action-pill" vid="44">Save</span>
+            <span class="action-pill" vid="45">Share</span>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="picture-post" vid="46">
+        <div class="picture-frame" vid="47">
+          <img
+            src="https://images.unsplash.com/photo-1515825838458-f2a94b20105a?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+            alt="Matcha Latte Art" vid="48">
+        </div>
+        <div class="picture-caption-box" vid="49">
+          <div class="caption-text" vid="50">
+            <span
+              style="display: block; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 4px; opacity: 0.6;"
+              vid="51">Daily Ritual</span>
+            Morning layers. The gradient before the stir is the best part.
+          </div>
+          <div class="caption-number" vid="52">03</div>
+        </div>
+      </article>
+    </main>
+
+
+    <nav class="bottom-nav" vid="53">
+      <div class="nav-item active" vid="54">
+        <div class="nav-icon" style="background: var(--c-green-dark);" vid="55"></div>
+        <span vid="56">Home</span>
+      </div>
+      <div class="nav-item" vid="57">
+        <div class="nav-icon" vid="58"></div>
+        <span vid="59">Shop</span>
+      </div>
+      <div class="nav-item" vid="60">
+        <div class="nav-icon" vid="61"></div>
+        <span vid="62">Guide</span>
+      </div>
+      <div class="nav-item" vid="63">
+        <div class="nav-icon" vid="64"></div>
+        <span vid="65">Cart</span>
+      </div>
+    </nav>
+  </div>
+
+
+</body>
+
+</html>

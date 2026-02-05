@@ -9,6 +9,16 @@
       
       
       <item>
+        <title>SEO for a Blog Nobody Reads</title>
+        <description><![CDATA[Added structured data, Open Graph tags, sitemaps, and RSS feeds to kanthi.io. Because even a blog with zero readers deserves proper SEO.]]></description>
+        <link>https://kanthi.io/seo-for-a-blog-nobody-reads/</link>
+        <guid>https://kanthi.io/seo-for-a-blog-nobody-reads/</guid>
+        <pubDate>Wed, 04 Feb 2026 00:00:00 GMT</pubDate>
+      </item>
+    
+      
+      
+      <item>
         <title>When the Extension Won&#39;t Talk to the Backend</title>
         <description><![CDATA[A late-night debugging session with entt-agent. Tailscale wouldn&#39;t connect, the React app showed no data, and I learned how my Chrome extension actually works.]]></description>
         <link>https://kanthi.io/debugging-entt-agent-late-night/</link>

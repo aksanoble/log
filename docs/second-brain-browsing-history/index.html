@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+      
+    
+    
+      
+    
+    <title>Building a Second Brain from Browsing History — kanthi</title>
+    <meta name="description" content="Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built...">
+    <meta name="robots" content="index,follow">
+    
+      <meta name="author" content="Akshay Kanthi">
+    
+    <link rel="canonical" href="https://kanthi.io/second-brain-browsing-history/">
+    <meta property="og:site_name" content="kanthi">
+    <meta property="og:title" content="Building a Second Brain from Browsing History — kanthi">
+    <meta property="og:description" content="Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built...">
+    <meta property="og:url" content="https://kanthi.io/second-brain-browsing-history/">
+    <meta property="og:type" content="article">
+    
+      <meta property="og:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+      <meta property="og:image:alt" content="Building a Second Brain from Browsing History">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+      <meta name="twitter:creator" content="@aksanoble">
+    
+    <meta name="twitter:title" content="Building a Second Brain from Browsing History — kanthi">
+    <meta name="twitter:description" content="Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built...">
+    
+      <meta name="twitter:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+    
+    
+      <meta property="article:published_time" content="2026-01-30T00:00:00.000Z">
+      <meta property="article:modified_time" content="2026-01-30T00:00:00.000Z">
+    
+    
+      <link rel="alternate" type="application/rss+xml" title="kanthi RSS" href="https://kanthi.io/feed.xml">
+    
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebSite","name":"kanthi","url":"https://kanthi.io","description":"Personal website and digital garden of Akshay Kanthi","about":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]},"publisher":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+    </script>
+    
+      <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BlogPosting","headline":"Building a Second Brain from Browsing History","description":"Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built...","url":"https://kanthi.io/second-brain-browsing-history/","datePublished":"2026-01-30T00:00:00.000Z","dateModified":"2026-01-30T00:00:00.000Z","image":"https://kanthi.io/assets/IMG_9015-01.jpeg","author":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+      </script>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css">
+    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+  </head>
+  <body class="page-post">
+    
+    
+      <div class="site-frame">
+    
+      <header>
+  <div class="brand">
+    <a class="brand-link" href="/">KANTHI</a>
+  </div>
+  <nav>
+    
+      
+      <a href="/archive/">ARCHIVE</a>
+    
+      
+      <a href="/about/">ABOUT</a>
+    
+    <a href="/feed.xml">RSS</a>
+  </nav>
+</header>
+
+      <main class="article-main">
+  <article class="article-block">
+    <div class="article-meta">
+      <span class="article-index">Jan 30</span>
+      <span>LOG</span>
+    </div>
+
+    <h1 class="type-display article-title">Building a Second Brain from Browsing History</h1>
+
+    
+      <p class="article-dek">Started entt-agent - a Chrome extension that tracks browsing history and extracts entities to build a personal knowledge graph. Think personal Wikipedia, built automatically.</p>
+    
+
+    
+
+    <div class="article-body">
+      <p>What if everything I read online automatically became part of a personal knowledge base? Every article, every documentation page, every random Wikipedia rabbit hole - all connected, all searchable, all mine.</p>
+<p>That's the idea behind <strong>entt-agent</strong>. A system to build my own &quot;second brain&quot; from browsing activity.</p>
+<p>The architecture: a Chrome extension captures URLs and page content as I browse. The content gets sent to a Python backend running <a href="https://huggingface.co/numind/NuNER_Zero">NuNER_Zero</a> for entity extraction. The entities and their relationships get stored in <a href="https://terminusdb.com/">TerminusDB</a> - a graph database I'm running on my home server via Coolify.</p>
+<p>Sounds straightforward. It wasn't.</p>
+<p>First, I downloaded the wrong model. There's a <code>NuNER_Zero</code> and there's... other things with similar names. The HuggingFace downloads kept failing halfway through. Turns out you need to use <code>huggingface-cli</code> directly for reliable downloads. Who designs these things?</p>
+<p>Then GLiNer (the library NuNER uses) decided it didn't like my Python version. Or was it scipy? Something about Fortran compilers. I don't want to talk about it.</p>
+<p>But eventually - entities. Real entities extracted from real web pages, sitting in a graph database, waiting to be connected.</p>
+<p>The vision: a personal Wikipedia that builds itself. We'll see if it gets there.</p>
+
+    </div>
+  </article>
+</main>
+
+      <footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-links">
+      
+        
+          <a href="https://x.com/aksanoble">X</a>
+        
+          <a href="https://linkedin.com/in/akshaykanthi">LinkedIn</a>
+        
+      
+      <a href="/feed.xml">RSS</a>
+    </div>
+  </div>
+</footer>
+
+    
+      </div>
+    
+  </body>
+</html>

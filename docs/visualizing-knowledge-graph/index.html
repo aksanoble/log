@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+      
+    
+    
+      
+    
+    <title>Visualizing the Knowledge Graph — kanthi</title>
+    <meta name="description" content="Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a &#39;visit&#39; should be an entity or a relationship.">
+    <meta name="robots" content="index,follow">
+    
+      <meta name="author" content="Akshay Kanthi">
+    
+    <link rel="canonical" href="https://kanthi.io/visualizing-knowledge-graph/">
+    <meta property="og:site_name" content="kanthi">
+    <meta property="og:title" content="Visualizing the Knowledge Graph — kanthi">
+    <meta property="og:description" content="Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a &#39;visit&#39; should be an entity or a relationship.">
+    <meta property="og:url" content="https://kanthi.io/visualizing-knowledge-graph/">
+    <meta property="og:type" content="article">
+    
+      <meta property="og:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+      <meta property="og:image:alt" content="Visualizing the Knowledge Graph">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+      <meta name="twitter:creator" content="@aksanoble">
+    
+    <meta name="twitter:title" content="Visualizing the Knowledge Graph — kanthi">
+    <meta name="twitter:description" content="Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a &#39;visit&#39; should be an entity or a relationship.">
+    
+      <meta name="twitter:image" content="https://kanthi.io/assets/IMG_9015-01.jpeg">
+    
+    
+      <meta property="article:published_time" content="2026-02-01T00:00:00.000Z">
+      <meta property="article:modified_time" content="2026-02-01T00:00:00.000Z">
+    
+    
+      <link rel="alternate" type="application/rss+xml" title="kanthi RSS" href="https://kanthi.io/feed.xml">
+    
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebSite","name":"kanthi","url":"https://kanthi.io","description":"Personal website and digital garden of Akshay Kanthi","about":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]},"publisher":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+    </script>
+    
+      <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BlogPosting","headline":"Visualizing the Knowledge Graph","description":"Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a 'visit' should be an entity or a relationship.","url":"https://kanthi.io/visualizing-knowledge-graph/","datePublished":"2026-02-01T00:00:00.000Z","dateModified":"2026-02-01T00:00:00.000Z","image":"https://kanthi.io/assets/IMG_9015-01.jpeg","author":{"@type":"Person","name":"Akshay Kanthi","url":"https://kanthi.io/about/","sameAs":["https://x.com/aksanoble","https://linkedin.com/in/akshaykanthi"]}}
+      </script>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css">
+    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+  </head>
+  <body class="page-post">
+    
+    
+      <div class="site-frame">
+    
+      <header>
+  <div class="brand">
+    <a class="brand-link" href="/">KANTHI</a>
+  </div>
+  <nav>
+    
+      
+      <a href="/archive/">ARCHIVE</a>
+    
+      
+      <a href="/about/">ABOUT</a>
+    
+    <a href="/feed.xml">RSS</a>
+  </nav>
+</header>
+
+      <main class="article-main">
+  <article class="article-block">
+    <div class="article-meta">
+      <span class="article-index">Feb 1</span>
+      <span>LOG</span>
+    </div>
+
+    <h1 class="type-display article-title">Visualizing the Knowledge Graph</h1>
+
+    
+      <p class="article-dek">Built a React frontend with ReactFlow to visualize the knowledge graph. Also debated whether a &#39;visit&#39; should be an entity or a relationship.</p>
+    
+
+    
+
+    <div class="article-body">
+      <p>A knowledge graph isn't very useful if you can't see it.</p>
+<p>Spent the day building a React frontend for entt-agent. <a href="https://reactflow.dev/">ReactFlow</a> handles the graph visualization - nodes for entities, edges for relationships. A panel on the left lists entity types. Click an entity, see its connections. Search for something, find it in the graph.</p>
+<p>The interesting debate was about data modeling.</p>
+<p>When I visit a URL, what should that look like in the graph? Is the visit itself an entity? Or is it a relationship between me and the URL?</p>
+<p>Option A: <strong>URL</strong> is an entity, <strong>Visit</strong> is an entity, they're connected by some relationship.</p>
+<p>Option B: <strong>URL</strong> is an entity, <strong>Visit</strong> is a relationship with a timestamp property.</p>
+<p>I went with Option B. A visit isn't really a &quot;thing&quot; - it's an event, a connection between a person and a place at a point in time. This way I can query &quot;all sites I visited on January 15th&quot; without creating thousands of visit-entities cluttering the graph.</p>
+<p>Also fixed a bug on <a href="https://kanthi.io">kanthi.io</a> - images weren't loading on production due to broken paths. The kind of bug that makes you wonder how it ever worked in the first place.</p>
+
+    </div>
+  </article>
+</main>
+
+      <footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-links">
+      
+        
+          <a href="https://x.com/aksanoble">X</a>
+        
+          <a href="https://linkedin.com/in/akshaykanthi">LinkedIn</a>
+        
+      
+      <a href="/feed.xml">RSS</a>
+    </div>
+  </div>
+</footer>
+
+    
+      </div>
+    
+  </body>
+</html>

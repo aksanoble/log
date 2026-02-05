@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>https://kanthi.io/ai-testing-session-gap/</loc>
+      <loc>https://kanthi.io/archive/</loc>
       
-        <lastmod>2026-01-29T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/data-commons/</loc>
-      
-        <lastmod>2021-01-08T00:00:00.000Z</lastmod>
+        <lastmod>2026-02-04T19:53:19.527Z</lastmod>
       
     </url>
   
     <url>
-      <loc>https://kanthi.io/debugging-entt-agent-late-night/</loc>
+      <loc>https://kanthi.io/about/</loc>
       
-        <lastmod>2026-02-03T00:00:00.000Z</lastmod>
+        <lastmod>2026-02-01T08:31:39.256Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/</loc>
+      
+        <lastmod>2026-02-01T11:24:27.001Z</lastmod>
       
     </url>
   
@@ -37,23 +37,9 @@
     </url>
   
     <url>
-      <loc>https://kanthi.io/making-computers-personal-again/</loc>
+      <loc>https://kanthi.io/getting-started-with-customer-support-on-telegram/</loc>
       
-        <lastmod>2021-03-23T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/linked-data/</loc>
-      
-        <lastmod>2022-09-21T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/local-llms-metal-crashes/</loc>
-      
-        <lastmod>2026-01-31T00:00:00.000Z</lastmod>
+        <lastmod>2021-01-05T00:00:00.000Z</lastmod>
       
     </url>
   
@@ -65,37 +51,9 @@
     </url>
   
     <url>
-      <loc>https://kanthi.io/restart/</loc>
+      <loc>https://kanthi.io/debugging-entt-agent-late-night/</loc>
       
-        <lastmod>2019-10-13T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/freecodecamp-offline/</loc>
-      
-        <lastmod>2019-10-29T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/getting-started-with-customer-support-on-telegram/</loc>
-      
-        <lastmod>2021-01-05T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/sassy/</loc>
-      
-        <lastmod>2020-05-10T00:00:00.000Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/tech-by-the-lake/</loc>
-      
-        <lastmod>2021-11-24T00:00:00.000Z</lastmod>
+        <lastmod>2026-02-03T00:00:00.000Z</lastmod>
       
     </url>
   
@@ -107,16 +65,37 @@
     </url>
   
     <url>
-      <loc>https://kanthi.io/selfhosting-caprover-versus-cloudron/</loc>
+      <loc>https://kanthi.io/ai-testing-session-gap/</loc>
       
-        <lastmod>2023-08-18T00:00:00.000Z</lastmod>
+        <lastmod>2026-01-29T00:00:00.000Z</lastmod>
       
     </url>
   
     <url>
-      <loc>https://kanthi.io/telebooth/</loc>
+      <loc>https://kanthi.io/restart/</loc>
       
-        <lastmod>2021-01-02T00:00:00.000Z</lastmod>
+        <lastmod>2019-10-13T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/linked-data/</loc>
+      
+        <lastmod>2022-09-21T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/sassy/</loc>
+      
+        <lastmod>2020-05-10T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/local-llms-metal-crashes/</loc>
+      
+        <lastmod>2026-01-31T00:00:00.000Z</lastmod>
       
     </url>
   
@@ -135,6 +114,20 @@
     </url>
   
     <url>
+      <loc>https://kanthi.io/seo-for-a-blog-nobody-reads/</loc>
+      
+        <lastmod>2026-02-04T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/tech-by-the-lake/</loc>
+      
+        <lastmod>2021-11-24T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://kanthi.io/visualizing-knowledge-graph/</loc>
       
         <lastmod>2026-02-01T00:00:00.000Z</lastmod>
@@ -142,23 +135,37 @@
     </url>
   
     <url>
-      <loc>https://kanthi.io/archive/</loc>
+      <loc>https://kanthi.io/freecodecamp-offline/</loc>
       
-        <lastmod>2026-02-04T19:53:19.527Z</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://kanthi.io/</loc>
-      
-        <lastmod>2026-02-01T11:24:27.001Z</lastmod>
+        <lastmod>2019-10-29T00:00:00.000Z</lastmod>
       
     </url>
   
     <url>
-      <loc>https://kanthi.io/about/</loc>
+      <loc>https://kanthi.io/selfhosting-caprover-versus-cloudron/</loc>
       
-        <lastmod>2026-02-01T08:31:39.256Z</lastmod>
+        <lastmod>2023-08-18T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/making-computers-personal-again/</loc>
+      
+        <lastmod>2021-03-23T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/data-commons/</loc>
+      
+        <lastmod>2021-01-08T00:00:00.000Z</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://kanthi.io/telebooth/</loc>
+      
+        <lastmod>2021-01-02T00:00:00.000Z</lastmod>
       
     </url>
   

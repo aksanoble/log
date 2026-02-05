@@ -52,12 +52,12 @@ textureOverlay: true
           <div class="month-separator">{{ month.name }}</div>
           {% for post in month.posts %}
             {% set target = post.data.external or post.url %}
-            {% set isImported = post.data.tags and ("imported" in post.data.tags) %}
-            {% if isImported %}
+            {% set cardBg = post.data.cardClass | replace("feed-item", "") | replace("large", "") | trim if post.data.cardClass else "" %}
+            {% if cardBg %}
+              {% set itemClass = "archive-item " ~ cardBg %}
+            {% else %}
               {% set colorClass = colorClasses[loop.index0 % colorClasses.length] %}
               {% set itemClass = "archive-item " ~ colorClass %}
-            {% else %}
-              {% set itemClass = "archive-item " ~ (post.data.type or "note") %}
             {% endif %}
             <a href="{{ target }}" class="{{ itemClass }}">
               <span class="meta">{{ post.date | dateShort }}</span>
